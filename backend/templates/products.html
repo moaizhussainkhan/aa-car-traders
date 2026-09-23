@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Catalog — AA Car Traders{% endblock %}
+{% block content %}
+<div class="container py-8">
+  <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h1 id="pageHeading" class="text-xl font-bold text-silver-bright sm:text-2xl">Catalog</h1>
+      <p id="resultCount" class="mt-0.5 text-xs text-silver-dim"></p>
+    </div>
+    <div class="flex items-center gap-2">
+      <select id="sortSelect" class="field w-auto py-2 text-sm">
+        <option value="new">Newest first</option>
+        <option value="low">Price: low → high</option>
+        <option value="high">Price: high → low</option>
+      </select>
+      <button id="filtersToggle" class="btn-ghost px-3 py-2 text-sm lg:hidden">☰ Filters</button>
+    </div>
+  </div>
+
+  <div id="activeFilters" class="mb-5 hidden flex-wrap gap-2"></div>
+
+  <div class="grid grid-cols-1 gap-6 lg:grid-cols-[220px_1fr]">
+    <aside id="filtersAside" class="hidden space-y-6 lg:block">
+      <div>
+        <h3 class="mb-2 text-sm font-semibold text-silver-bright">Category</h3>
+        <div id="categoryFilterList" class="flex flex-col gap-1.5"></div>
+      </div>
+      <div>
+        <h3 class="mb-2 text-sm font-semibold text-silver-bright">Car make</h3>
+        <div id="makeFilterList" class="flex flex-col gap-1.5"></div>
+      </div>
+    </aside>
+    <div id="productResults">
+      <div class="flex items-center justify-center gap-2 py-24 text-silver-dim"><span class="spinner"></span> Loading…</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="/static/js/product-card.js?v=3"></script>
+<script src="/static/js/products.js?v=3"></script>
+{% endblock %}

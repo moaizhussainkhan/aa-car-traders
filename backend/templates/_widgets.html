@@ -1,0 +1,53 @@
+<!-- Floating WhatsApp button -->
+<a id="floatingWhatsApp" href="#" target="_blank" rel="noopener noreferrer"
+   aria-label="Chat with AA Car Traders on WhatsApp"
+   class="fixed bottom-5 left-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-600 text-white shadow-lg shadow-green-900/40 transition hover:scale-105 hover:bg-green-500">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2Zm0 18.13h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.14.82.84-3.06-.2-.31a8.2 8.2 0 0 1-1.26-4.34c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.21-8.24 8.21Zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.8-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.98-1.22-.73-.65-1.22-1.46-1.37-1.7-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.13.17 1.73 2.65 4.2 3.71.59.25 1.05.4 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.19.2-.58.2-1.08.14-1.19-.06-.1-.23-.17-.48-.29Z"/></svg>
+</a>
+
+<!-- Floating AI Adviser -->
+<div class="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2">
+  <div id="aiBubbleHint" class="relative hidden max-w-[230px] rounded-2xl rounded-br-sm border border-crimson/40 bg-carbon-900/95 px-3.5 py-2.5 text-xs leading-snug text-silver shadow-xl sm:block">
+    <button id="aiHintClose" aria-label="Dismiss" class="absolute -left-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full border border-carbon-600 bg-carbon-800 text-[10px] text-silver-dim hover:text-white">✕</button>
+    <span class="font-semibold text-silver-bright">AI Agent:</span> How can I uplift your ride? <span class="text-crimson-bright">(Tap for Voice or Chat)</span>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="hidden rounded-full border border-carbon-600 bg-carbon-900/95 px-3 py-1 text-[11px] font-semibold tracking-wide text-silver-bright sm:block">AI Adviser</span>
+    <button id="aiWidgetToggle" aria-label="Open AI Adviser"
+      class="ai-orb relative flex h-14 w-14 items-center justify-center rounded-full border-2 border-crimson bg-carbon-900 transition hover:scale-105">
+      <svg id="aiIconBot" width="34" height="34" viewBox="0 0 40 40" fill="none">
+        <rect x="6" y="11" width="28" height="22" rx="9" fill="#1f1f24" stroke="#5b5b66" stroke-width="1.5"/>
+        <circle cx="15" cy="21" r="3.2" fill="#38bdf8"/><circle cx="25" cy="21" r="3.2" fill="#38bdf8"/>
+        <path d="M16 27.5c2.2 1.4 5.8 1.4 8 0" stroke="#9ca3af" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M20 11V6" stroke="#9ca3af" stroke-width="1.6" stroke-linecap="round"/><circle cx="20" cy="5" r="2" fill="#FF0033"/>
+      </svg>
+      <svg id="aiIconClose" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF0033" stroke-width="2.4" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+</div>
+
+<div id="aiWidgetPanel" class="fixed bottom-24 right-3 z-50 hidden h-[min(560px,calc(100vh-7rem))] w-[calc(100vw-1.5rem)] max-w-[390px] flex-col overflow-hidden rounded-2xl border border-carbon-600 bg-carbon-950 shadow-2xl sm:right-5">
+  <div class="flex items-center justify-between border-b border-carbon-600 bg-carbon-900 px-4 py-3">
+    <div class="flex items-center gap-2.5">
+      <span class="flex h-8 w-8 items-center justify-center rounded-full bg-crimson/15 text-crimson-bright">✨</span>
+      <div>
+        <p class="text-sm font-semibold text-silver-bright">AI Adviser</p>
+        <p class="text-[11px] text-silver-dim">Ask in English, اردو or Roman Urdu</p>
+      </div>
+    </div>
+    <button id="aiSpeakBtn" type="button" title="Read replies aloud" class="rounded-md border border-carbon-600 px-2 py-1 text-xs text-silver-dim hover:text-white">🔈 Off</button>
+  </div>
+  <div class="flex gap-2 border-b border-carbon-600 px-3 py-2">
+    <input id="aiMake" placeholder="Car make (e.g. Honda)" class="field w-1/2 py-1.5 text-xs" />
+    <input id="aiModel" placeholder="Model (e.g. Civic)" class="field w-1/2 py-1.5 text-xs" />
+  </div>
+  <div id="aiMessages" class="flex-1 space-y-3 overflow-y-auto px-4 py-4"></div>
+  <form id="aiForm" class="flex items-center gap-2 border-t border-carbon-600 p-3">
+    <input type="file" id="aiImageInput" accept="image/*" class="hidden" />
+    <button type="button" id="aiImageBtn" title="Upload a car photo for visual search" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-carbon-600 text-silver-dim hover:border-crimson hover:text-crimson-bright">📷</button>
+    <button type="button" id="aiMicBtn" title="Speak your question" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-carbon-600 text-silver-dim hover:border-crimson hover:text-crimson-bright">🎤</button>
+    <button type="button" id="aiLangBtn" title="Voice language" class="h-9 shrink-0 rounded-lg border border-carbon-600 px-2 text-[11px] font-semibold text-silver-dim hover:border-crimson hover:text-crimson-bright">EN</button>
+    <input id="aiInput" placeholder="Ask about a part…" class="field min-w-0 flex-1 text-sm" autocomplete="off" />
+    <button type="submit" class="btn-crimson flex h-9 w-9 shrink-0 items-center justify-center" aria-label="Send">➤</button>
+  </form>
+</div>

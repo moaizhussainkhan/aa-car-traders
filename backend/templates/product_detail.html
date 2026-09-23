@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Product — AA Car Traders{% endblock %}
+{% block content %}
+<div id="productDetailRoot" class="container py-8" data-slug="{{ slug }}">
+  <div class="flex items-center justify-center gap-2 py-32 text-silver-dim"><span class="spinner"></span> Loading product…</div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script src="/static/js/product-detail.js?v=3"></script>
+{% endblock %}

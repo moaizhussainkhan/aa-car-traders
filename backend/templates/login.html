@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Login — AA Car Traders{% endblock %}
+{% block content %}
+<div class="flex min-h-[70vh] items-center justify-center px-4 py-12">
+  <div class="card card-red w-full max-w-sm p-7">
+    <div class="mb-5 flex justify-center"><img src="/static/images/logo.png" alt="AA Car Traders" width="104" height="80" class="h-16 w-auto" /></div>
+    <h1 class="mb-1 text-center text-lg font-bold text-silver-bright">Welcome back</h1>
+    <p class="mb-6 text-center text-xs text-silver-dim">Sign in to track your orders, or to use reseller wholesale tools.</p>
+    <form id="loginForm" class="space-y-4">
+      <div><label class="lbl" for="email">Email</label><input type="email" id="email" required autocomplete="email" class="field" /></div>
+      <div><label class="lbl" for="password">Password</label><input type="password" id="password" required autocomplete="current-password" class="field" /></div>
+      <p id="formError" class="hidden text-xs text-crimson-bright"></p>
+      <button type="submit" id="formSubmit" class="btn-crimson w-full py-2.5 text-sm">Sign in</button>
+    </form>
+    <p class="mt-6 text-center text-xs text-silver-dim">New here? <a href="/register" class="font-semibold text-crimson-bright hover:underline">Create an account</a></p>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/auth-forms.js?v=3"></script>{% endblock %}

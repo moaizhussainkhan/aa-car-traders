@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}AA Car Traders — Trust | Quality | Satisfaction{% endblock %}</title>
+  <meta name="description" content="{% block meta_desc %}AA Car Traders — genuine car accessories, body kits, LED lighting, spoilers, interior & exterior modification parts. AI-powered part adviser, reseller pricing, nationwide delivery in Pakistan.{% endblock %}" />
+  {% block robots %}{% endblock %}
+  <link rel="icon" type="image/png" href="/static/images/favicon.png" />
+  <meta name="theme-color" content="#0A0A0B" />
+  <meta property="og:title" content="AA Car Traders — Trust | Quality | Satisfaction" />
+  <meta property="og:description" content="Body kits, LED lights, spoilers, interior & exterior modification parts — delivered across Pakistan." />
+  <meta property="og:image" content="{{ site_url }}/static/images/logo-full.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="{{ site_url }}{{ request.url.path }}" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  {% if use_cdn %}
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      colors: {
+        carbon: { DEFAULT: "#121212", 950: "#0A0A0B", 900: "#121212", 800: "#1A1A1C", 700: "#232326", 600: "#2E2E32" },
+        crimson: { DEFAULT: "#E50914", bright: "#FF0033", dark: "#A5060F" },
+        silver: { DEFAULT: "#D1D5DB", bright: "#F3F4F6", dim: "#9CA3AF" } },
+      fontFamily: { display: ["Inter", "sans-serif"], body: ["Inter", "sans-serif"] } } } };
+  </script>
+  {% else %}
+  <link rel="stylesheet" href="/static/css/tailwind.css?v=3" />
+  {% endif %}
+  <link rel="stylesheet" href="/static/css/style.css?v=3" />
+  {% block head %}{% endblock %}
+</head>
+<body class="bg-carbon-950 font-body text-silver antialiased">
+
+  {% block header %}{% include "_header.html" %}{% endblock %}
+
+  <main class="min-h-[60vh]">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% block footer %}{% include "_footer.html" %}{% endblock %}
+
+  {% block widgets %}{% include "_widgets.html" %}{% endblock %}
+
+  <div id="toastRoot" class="pointer-events-none fixed inset-x-0 bottom-24 z-[70] flex flex-col items-center gap-2 px-4"></div>
+  <div id="modalRoot"></div>
+
+  <script src="/static/js/api.js?v=3"></script>
+  {% block core_js %}
+  <script src="/static/js/shop-ui.js?v=3"></script>
+  <script src="/static/js/navbar.js?v=3"></script>
+  <script src="/static/js/ai-widget.js?v=3"></script>
+  {% endblock %}
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

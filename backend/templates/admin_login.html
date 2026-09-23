@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Admin sign in — AA Car Traders{% endblock %}
+{% block robots %}<meta name="robots" content="noindex,nofollow" />{% endblock %}
+{% block header %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block widgets %}{% endblock %}
+{% block core_js %}{% endblock %}
+{% block content %}
+<div class="flex min-h-screen items-center justify-center bg-crimson-glow px-4 py-10">
+  <div class="card card-red w-full max-w-sm p-7">
+    <div class="mb-4 flex justify-center"><img src="/static/images/logo.png" alt="AA Car Traders" width="130" height="100" class="h-24 w-auto" /></div>
+    <h1 class="text-center text-lg font-bold text-silver-bright">Admin sign in</h1>
+    <p class="mb-6 mt-1 text-center text-xs text-silver-dim">Restricted area — AA Car Traders administrator only.</p>
+    <form id="adminLoginForm" class="space-y-4">
+      <div><label class="lbl" for="email">Admin email</label><input type="email" id="email" required autocomplete="username" class="field field-red" placeholder="you@example.com" /></div>
+      <div><label class="lbl" for="password">Password</label>
+        <div class="relative"><input type="password" id="password" required autocomplete="current-password" class="field field-red pr-14" />
+          <button type="button" id="togglePw" class="absolute right-2 top-1/2 -translate-y-1/2 rounded px-2 py-1 text-xs text-silver-dim hover:text-white">Show</button></div></div>
+      <p id="formError" class="hidden text-xs text-crimson-bright"></p>
+      <button type="submit" id="formSubmit" class="btn-crimson w-full py-2.5 text-sm">Sign in to dashboard</button>
+    </form>
+    <p class="mt-6 text-center text-[11px] text-silver-dim"><a href="/" class="hover:text-crimson-bright">← Back to store</a></p>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+(function () {
+  const u = AA.getUser();
+  if (u && AA.isAdmin(u) && AA.getToken()) { location.replace("/admin"); return; }
+  const $ = (id) => document.getElementById(id);
+  $("togglePw").addEventListener("click", () => {
+    const p = $("password"); const show = p.type === "password";
+    p.type = show ? "text" : "password"; $("togglePw").textContent = show ? "Hide" : "Show";
+  });
+  $("adminLoginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = $("formSubmit"), err = $("formError");
+    err.classList.add("hidden"); btn.disabled = true; btn.textContent = "Signing in…";
+    try {
+      const res = await AA.Auth.adminLogin($("email").value.trim(), $("password").value);
+      AA.setSession(res.access_token, res.user);
+      location.href = "/admin#products";
+    } catch (ex) {
+      err.textContent = ex.message || "Sign-in failed."; err.classList.remove("hidden");
+      btn.disabled = false; btn.textContent = "Sign in to dashboard";
+    }
+  });
+})();
+</script>
+{% endblock %}

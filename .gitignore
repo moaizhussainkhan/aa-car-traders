@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+deploy/.env.production
+*.db
+
+# Uploaded photos/videos (kept out of git; keep the folder itself)
+backend/media/*
+!backend/media/.gitkeep
+
+# OS
+.DS_Store

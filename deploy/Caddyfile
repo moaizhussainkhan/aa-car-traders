@@ -1,0 +1,12 @@
+# Replace aacartraders.com with your real domain if different.
+aacartraders.com {
+	encode gzip
+	request_body {
+		max_size 150MB
+	}
+	reverse_proxy app:8000
+}
+
+www.aacartraders.com {
+	redir https://aacartraders.com{uri} permanent
+}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Create account — AA Car Traders{% endblock %}
+{% block content %}
+<div class="flex min-h-[70vh] items-center justify-center px-4 py-12">
+  <div class="card card-red w-full max-w-md p-7">
+    <div class="mb-5 flex justify-center"><img src="/static/images/logo.png" alt="AA Car Traders" width="104" height="80" class="h-16 w-auto" /></div>
+    <h1 class="mb-1 text-center text-lg font-bold text-silver-bright">Create your account</h1>
+    <p class="mb-5 text-center text-xs text-silver-dim">Customers can order right away. Resellers get wholesale pricing after approval.</p>
+
+    <div class="mb-4 grid grid-cols-2 gap-2 text-sm" id="typeSwitch">
+      <button type="button" data-type="customer" class="rounded-lg border border-crimson bg-crimson/15 py-2 font-semibold text-silver-bright">Customer</button>
+      <button type="button" data-type="reseller" class="rounded-lg border border-carbon-600 py-2 font-semibold text-silver-dim">Reseller / Order taker</button>
+    </div>
+
+    <form id="registerForm" class="space-y-3">
+      <input required id="name" placeholder="Full name" class="field" autocomplete="name" />
+      <input required type="email" id="email" placeholder="Email" class="field" autocomplete="email" />
+      <input required id="phone" type="tel" placeholder="Mobile / WhatsApp number" class="field" autocomplete="tel" />
+      <input id="business_name" placeholder="Business / shop name" class="field hidden" />
+      <input required type="password" id="password" minlength="8" placeholder="Password (min 8 characters)" class="field" autocomplete="new-password" />
+      <p id="resellerNote" class="hidden rounded-lg border border-crimson/30 bg-crimson/5 p-3 text-xs text-silver-dim">Reseller accounts are reviewed by AA Car Traders. Once approved you'll see wholesale prices, margins, ZIP media downloads and the profit calculator.</p>
+      <p id="formError" class="hidden text-xs text-crimson-bright"></p>
+      <button type="submit" id="formSubmit" class="btn-crimson w-full py-2.5 text-sm">Create account</button>
+    </form>
+    <p class="mt-6 text-center text-xs text-silver-dim">Already registered? <a href="/login" class="font-semibold text-crimson-bright hover:underline">Sign in</a></p>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}<script src="/static/js/auth-forms.js?v=3"></script>{% endblock %}

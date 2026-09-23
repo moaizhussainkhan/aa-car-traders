@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Hero carousel (slides are managed in Admin → Settings → Banners) -->
+<section class="container pt-5">
+  <div class="relative overflow-hidden rounded-2xl border border-carbon-600 bg-carbon-900 bg-crimson-glow">
+    <div id="hero" class="relative h-[250px] sm:h-[330px] lg:h-[380px]"></div>
+    <button id="heroPrev" aria-label="Previous slide" class="absolute left-3 top-1/2 z-10 flex max-sm:!hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-crimson/60 bg-carbon-950/70 text-crimson-bright backdrop-blur hover:bg-crimson hover:text-white">‹</button>
+    <button id="heroNext" aria-label="Next slide" class="absolute right-3 top-1/2 z-10 flex max-sm:!hidden h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-crimson/60 bg-carbon-950/70 text-crimson-bright backdrop-blur hover:bg-crimson hover:text-white">›</button>
+    <div id="heroDots" class="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 gap-2"></div>
+  </div>
+</section>
+
+<section class="container py-8">
+  <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]">
+    <div>
+      <div class="mb-4 flex items-end justify-between">
+        <h2 class="text-lg font-bold text-silver-bright sm:text-xl">Latest Arrivals</h2>
+        <a href="/products" class="text-sm font-medium text-crimson-bright hover:underline">View all parts →</a>
+      </div>
+      <div id="featuredProducts">
+        <div class="flex items-center justify-center gap-2 py-24 text-silver-dim"><span class="spinner"></span> Loading…</div>
+      </div>
+    </div>
+
+    <aside class="space-y-4 self-start lg:sticky lg:top-36">
+      <div class="card p-4">
+        <h3 class="text-base font-bold text-silver-bright">Reseller Tools</h3>
+        <button type="button" data-action="bulk-zip" class="mt-3 w-full rounded-lg border border-crimson bg-crimson/10 px-3 py-3 text-left transition hover:bg-crimson/20">
+          <span class="block text-sm font-bold text-silver-bright">⬇ Bulk Media Downloader</span>
+          <span class="block text-xs text-silver-dim">ZIP archive of all content</span>
+        </button>
+        <a href="/reseller#calculator" class="mt-3 flex items-center gap-3 rounded-lg border border-carbon-600 bg-carbon-900 px-3 py-3 transition hover:border-crimson">
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md bg-green-600/15 text-lg">🧮</span>
+          <span><span class="block text-sm font-bold text-silver-bright">Markaz-Style Profit Calculator</span>
+          <span class="block text-xs text-silver-dim">Set your price, see your profit</span></span>
+        </a>
+        <p class="mt-3 text-[11px] leading-snug text-silver-dim">Wholesale tools are for approved resellers. <a href="/register?type=reseller" class="text-crimson-bright hover:underline">Apply here</a>.</p>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start gap-3">
+          <span class="ai-orb flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-crimson bg-carbon-900 text-lg">🤖</span>
+          <div class="rounded-2xl rounded-tl-sm border border-carbon-600 bg-carbon-900 px-3 py-2 text-xs leading-snug text-silver">
+            <span class="font-semibold text-silver-bright">AI Agent:</span> How can I uplift your ride? <span class="text-crimson-bright">(Tap for Voice or Chat)</span>
+          </div>
+        </div>
+        <button type="button" onclick="window.AIWidget && window.AIWidget.open()" class="btn-crimson mt-3 w-full py-2.5 text-sm">Chat with AI Adviser</button>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="container pb-8">
+  <div class="mb-4 flex items-end justify-between">
+    <h2 class="text-lg font-bold text-silver-bright sm:text-xl">Shop by Category</h2>
+    <a href="/products" class="text-sm font-medium text-crimson-bright hover:underline">All categories →</a>
+  </div>
+  <div id="categoryGrid" class="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7"></div>
+</section>
+
+<section id="shopByModelSection" class="hidden border-y border-carbon-600/60 bg-carbon-900/50 py-10">
+  <div class="container">
+    <h2 class="mb-5 text-lg font-bold text-silver-bright sm:text-xl">Shop by Vehicle Model</h2>
+    <div id="shopByModelGrid" class="flex flex-wrap gap-2.5"></div>
+  </div>
+</section>
+
+<section class="container py-10">
+  <div class="grid gap-4 sm:grid-cols-3">
+    <div class="card p-5"><p class="text-2xl">🛡️</p><p class="mt-2 text-sm font-bold text-silver-bright">Trust</p><p class="mt-1 text-xs leading-relaxed text-silver-dim">Verified parts, transparent pricing, real stock.</p></div>
+    <div class="card p-5"><p class="text-2xl">⚡</p><p class="mt-2 text-sm font-bold text-silver-bright">Quality</p><p class="mt-1 text-xs leading-relaxed text-silver-dim">OEM-fit and performance-grade parts, checked for fitment.</p></div>
+    <div class="card p-5"><p class="text-2xl">💬</p><p class="mt-2 text-sm font-bold text-silver-bright">Satisfaction</p><p class="mt-1 text-xs leading-relaxed text-silver-dim">Direct WhatsApp support from order to delivery. <a id="heroWhatsapp" href="#" target="_blank" rel="noopener noreferrer" class="text-green-400 hover:underline">Chat now</a></p></div>
+  </div>
+</section>
+
+{% endblock %}
+{% block extra_js %}
+<script src="/static/js/product-card.js?v=3"></script>
+<script src="/static/js/home.js?v=3"></script>
+{% endblock %}

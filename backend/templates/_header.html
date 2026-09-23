@@ -1,0 +1,79 @@
+<div id="announceBar" class="hidden bg-crimson px-4 py-1.5 text-center text-xs font-semibold text-white"></div>
+
+<header class="sticky top-0 z-40 border-b border-carbon-600/60 bg-carbon-950/95 backdrop-blur">
+  <div class="container flex h-[68px] items-center gap-3 lg:gap-6">
+    <a href="/" class="flex shrink-0 items-center" aria-label="AA Car Traders home">
+      <img src="/static/images/logo.png" alt="AA Car Traders" width="78" height="60" class="h-[52px] w-auto" />
+    </a>
+
+    <form id="navSearchForm" class="hidden max-w-2xl flex-1 items-center overflow-hidden rounded-lg border border-carbon-600 bg-carbon-900 md:flex">
+      <input id="navSearchInput" type="text" placeholder="Search by part or car model…" autocomplete="off"
+             class="w-full bg-transparent px-4 py-2.5 text-sm text-silver-bright placeholder:text-silver-dim/60 focus:outline-none" />
+      <button type="submit" aria-label="Search" class="flex h-full items-center bg-crimson px-4 py-2.5 text-white transition hover:bg-crimson-bright">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+    </form>
+
+    <div class="ml-auto flex items-center gap-2 sm:gap-3">
+      <div id="navAuthArea" class="hidden items-center gap-3 sm:flex"></div>
+      <button id="cartBtn" aria-label="Open cart" class="relative flex h-10 w-10 items-center justify-center rounded-lg border border-carbon-600 text-silver transition hover:border-crimson hover:text-white">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/></svg>
+        <span id="cartBadge" class="absolute -right-1.5 -top-1.5 hidden h-5 min-w-[20px] items-center justify-center rounded-full bg-crimson px-1 text-[11px] font-bold text-white">0</span>
+      </button>
+      <button id="mobileMenuBtn" aria-label="Toggle menu" class="flex h-10 w-10 items-center justify-center rounded-lg border border-carbon-600 text-silver lg:hidden">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Category row (desktop) -->
+  <nav class="relative hidden border-t border-carbon-700/70 bg-carbon-900/60 lg:block">
+    <div class="container flex items-stretch justify-between">
+      <button id="modelMenuBtn" type="button" class="nav-item group flex items-center gap-2.5 px-3 py-2.5 text-left">
+        <svg class="text-crimson-bright" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 13l2-5a2 2 0 0 1 1.9-1.4h10.2A2 2 0 0 1 19 8l2 5"/><rect x="2" y="13" width="20" height="5" rx="1.5"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>
+        <span><span class="block text-[13px] font-semibold text-silver-bright group-hover:text-crimson-bright">Shop by Model</span><span class="block text-[10.5px] text-silver-dim">Pick your car</span></span>
+      </button>
+      <a href="/products?group=modifications" class="nav-item group flex items-center gap-2.5 px-3 py-2.5">
+        <svg class="text-crimson-bright" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 16l1.5-4.5A2 2 0 0 1 7.4 10H16l3 3v3"/><path d="M2 17h20"/><path d="M8 7l3-3 3 3"/></svg>
+        <span><span class="block text-[13px] font-semibold text-silver-bright group-hover:text-crimson-bright">Modifications</span><span class="block text-[10.5px] text-silver-dim">Body Kits, LED, Spoilers</span></span>
+      </a>
+      <a href="/products?group=interior-exterior" class="nav-item group flex items-center gap-2.5 px-3 py-2.5">
+        <svg class="text-crimson-bright" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 21v-6a5 5 0 0 1 5-5h0a5 5 0 0 1 5 5v6"/><path d="M9 10 8 4h8l-1 6"/><path d="M5 21h14"/></svg>
+        <span><span class="block text-[13px] font-semibold text-silver-bright group-hover:text-crimson-bright">Interior &amp; Exterior</span><span class="block text-[10.5px] text-silver-dim">Seats, trims, styling</span></span>
+      </a>
+      <a href="/reseller" class="nav-item group flex items-center gap-2.5 px-3 py-2.5">
+        <svg class="text-crimson-bright" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/></svg>
+        <span><span class="block text-[13px] font-semibold text-silver-bright group-hover:text-crimson-bright">Reseller Portal</span><span class="block text-[10.5px] text-silver-dim">Wholesale &amp; tools</span></span>
+      </a>
+      <button type="button" data-action="visual-search" class="nav-item group flex items-center gap-2.5 px-3 py-2.5 text-left">
+        <svg class="text-crimson-bright" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8V5a1 1 0 0 1 1-1h3M16 4h3a1 1 0 0 1 1 1v3M20 16v3a1 1 0 0 1-1 1h-3M8 20H5a1 1 0 0 1-1-1v-3"/><circle cx="12" cy="12" r="3.2"/></svg>
+        <span><span class="block text-[13px] font-semibold text-silver-bright group-hover:text-crimson-bright">AI Visual Search</span><span class="block text-[10.5px] text-silver-dim">Upload a car photo</span></span>
+      </button>
+    </div>
+
+    <!-- Shop-by-model dropdown -->
+    <div id="modelMenu" class="absolute inset-x-0 top-full z-50 hidden border-b border-carbon-600 bg-carbon-950/98 shadow-2xl">
+      <div class="container py-5">
+        <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-silver-dim">Choose your car</p>
+        <div id="modelMenuGrid" class="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3 lg:grid-cols-5"></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="hidden border-t border-carbon-600 bg-carbon-950 px-4 pb-6 pt-4 lg:hidden">
+    <form id="navSearchFormMobile" class="mb-4 flex items-center overflow-hidden rounded-lg border border-carbon-600 bg-carbon-900">
+      <input type="text" id="navSearchInputMobile" placeholder="Search by part or car model…" class="w-full bg-transparent px-3 py-2.5 text-sm text-silver-bright focus:outline-none" />
+      <button class="bg-crimson px-4 py-2.5 text-white" aria-label="Search">🔍</button>
+    </form>
+    <div class="flex flex-col gap-3 text-sm font-medium">
+      <a href="/products" class="text-silver hover:text-crimson-bright">All products</a>
+      <a href="/products?group=modifications" class="text-silver hover:text-crimson-bright">Modifications (Body Kits, LED, Spoilers)</a>
+      <a href="/products?group=interior-exterior" class="text-silver hover:text-crimson-bright">Interior &amp; Exterior</a>
+      <a href="/reseller" class="text-silver hover:text-crimson-bright">Reseller Portal</a>
+      <button type="button" data-action="visual-search" class="text-left text-silver hover:text-crimson-bright">AI Visual Search</button>
+      <div class="divider-line my-1"></div>
+      <div id="navAuthAreaMobile" class="flex flex-col gap-3"></div>
+    </div>
+  </div>
+</header>
