@@ -6,7 +6,7 @@ Car-accessories & modification-parts store — **100% Python** (FastAPI + Jinja2
 Storefront for customers, a separate hidden admin panel, a reseller portal with wholesale tools, an AI parts adviser
 (chat + voice + photo) and direct WhatsApp ordering.
 
-- Phone: 03154448835 · Email: aacartrad3rs@gmail.com  (both editable in Admin → Settings)
+- Phone: 03154484835 · Email: aacartrad3rs@gmail.com  (both editable in Admin → Settings)
 
 ## Quick start (local)
 
